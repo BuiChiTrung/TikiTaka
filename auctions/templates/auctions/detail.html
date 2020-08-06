@@ -1,0 +1,109 @@
+{% extends "auctions/layout.html" %}
+
+{% block title %}
+    Detail
+{% endblock %}
+
+{% block content %}
+    <div id = "Detail" class = "container">
+        <div class = "row">
+            <div class = "col-6">
+                <div class = "Image">
+                    <img src = "{{ listing.image }}">
+                    {% if in_watchlist == False %}
+                        <a href = "{% url 'modify_watchlist' listing.id %}"><i class="far fa-eye"></i></a>
+                    {% else %}
+                        <a href = "{% url 'modify_watchlist' listing.id %}"><i class="far fa-eye-slash"></i></a>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class = "col-6">
+                <div class = "Title">
+                    Title: {{ listing.title }}
+                    {% if request.user == listing.create_user %}
+                        | <a href = "{% url 'listing_close' listing.id %}">Close Listing <i class="fas fa-window-close"></i></a>
+                    {% endif %}
+                </div>
+                <div class = "Created by">Created by: {{ listing.create_user }}</div> <br>
+                <div class = "State">State: {{ listing.state }}</div>
+                <div class = "Category">Category: {{ listing.category }}</div>
+                <div class = "Description">Description: {{ listing.description}}</div>
+                <div class = "Starting bid">Starting bid: {{ listing.starting_bid }}$</div>
+                <div class = "Highest bid">
+                    Highest bid:
+                    {% if highest_bid == 0 %}
+                        No one has bidded yet.
+                    {% else %}
+                        {{ highest_bid }}$ - by {{ winning_user.username }}
+                    {% endif %}
+                </div>
+                
+                {% if listing.state == "Active" %}
+                <form action = "{% url 'listing_bid' listing.id %}" method = "POST">
+                    {% csrf_token %}
+                    <div class = "form-group">
+                        {{ bid_form.money }}
+                        <button><img src = "https://www.freepngimg.com/thumb/auction/23010-6-auction-clipart-thumb.png"></button>
+                    </div>     
+                </form>
+                {% endif %}
+
+                <div class = "Message">{% include "auctions/messages.html" %}</div>
+
+                {% if listing.state == "Close" %}
+                <br>
+                <div class = "Message">
+                    {% if winning_user == request.user %}
+                        <div class = "alert alert-success">Congratulation!! You have won the listing</div>
+                    {% else %}
+                    <div class = "alert alert-danger">Listing has been closed</div>
+                    {% endif %}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+        {% if listing.state == "Active" %}
+        <br>
+        <form action = "{% url 'listing_comment' listing.id %}" method = "POST" class = "form-row">
+            {% csrf_token %}
+            <div class = "col-8">
+                {{ comment_form.comment_content }}
+            </div>
+            <div class = "col-2">
+                {{ comment_form.comment_rating }}
+            </div>
+            <button class = "btn btn-outline-info">Comment</button>
+        </form>
+        {% endif %}
+
+        <br>
+        <div class = "Comments">
+            <strong>Average Rating: {{ average_rating }}</strong><br><br>
+            {% for  comment in comments %}
+                <div class = "Rating">
+                    {% if comment.comment_rating >= 1 %}
+                    <i class="fas fa-star"></i>
+                    {% endif %}
+                    {% if comment.comment_rating >= 2 %}
+                    <i class="fas fa-star"></i>
+                    {% endif %}
+                    {% if comment.comment_rating >= 3 %}
+                    <i class="fas fa-star"></i>
+                    {% endif %}
+                    {% if comment.comment_rating >= 4 %}
+                    <i class="fas fa-star"></i>
+                    {% endif %}
+                    {% if comment.comment_rating >= 5 %}
+                    <i class="fas fa-star"></i>
+                    {% endif %} 
+                </div>
+
+                <div class = "Content">
+                    {{ comment.user.username }} : {{ comment.comment_content }}
+                </div>
+            {% endfor %}
+        </div>
+</div>
+{% endblock %}

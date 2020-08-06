@@ -1,0 +1,264 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    width: 100vw;
+    background-color: #1e272e;
+    font-family:Tangerine, serif;
+}
+
+.container {
+    width: 80vw;
+    a {
+        color: #27ae60;
+        text-decoration:none;
+    }
+    i {
+        width: 30px;
+        font-size: 30px;
+    }
+    .col{
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+
+        font-family: Fondamento,serif;
+        font-size: 15px;
+        color: #27ae60;
+
+    }
+    .col-lg-5{
+        display: flex;
+        justify-content: center;
+
+        font-family:Dancing Script, serif;
+        font-size: 40px;
+    }
+}
+
+#SideBar{
+    display: flex;
+    justify-content: center;
+
+    width: 100vw;
+    background-color: #27ae60;
+
+    .btn.btn-secondary{
+        border-style: hidden;
+        background-color: #27ae60;
+        font-size: 25px;
+        color: #1e272e;
+        a{
+            text-decoration: none;
+            color:#1e272e;
+        }
+    }
+    .dropdown-menu{
+        font-size: 23px;
+        background-color: #3ae374;
+    }
+
+    .btn.btn-secondary:hover {
+        background-color: #1e272e;
+        a {
+            color: #3ae374;
+        }
+    }
+}
+
+#Image{
+    height: 40vh;
+    img{
+        width: 100vw;
+        height: 40vh;
+    }
+    .Link{
+        width:200px;
+        transform: translate(810px, -50px);
+        a{
+            text-decoration: none;
+            font-size: 20px;
+            color: #1e272e;
+            font-weight: bolder;
+        }
+    }
+}
+
+.Link{
+    width: 100vw;
+}
+
+#Contact{
+    width: 100vw;
+    display: flex;
+    align-items: center;
+
+    list-style-type: none;
+    font-family:Indie Flower, serif;
+    background-color: #27ae60;
+
+    ul{
+        transform:translate(100px, 0);
+    }
+
+    img{
+        transform:translate(200px, 0);
+        border-radius: 50%;
+        width: 5%;
+        height: 5%;
+    }
+}
+
+#Form{
+    position: relative;
+    font-size: 20px;    
+    color: #27ae60;
+    h1 {
+        display: inline-block;
+    }
+    .alert{
+        display: inline-block;
+        width: fit-content;
+        height: fit-content;
+        padding:5px;
+        position: absolute;
+        right: 1.2%;
+    }
+    label {
+        font-size: 13px;
+        color: #f5cd79;
+        font-family: 'Sriracha', sans-serif;
+    }    
+    input, select {
+        font-size: 13px;
+        font-family: 'Sriracha', sans-serif;
+    }
+    a:hover{
+        font-weight: bolder;
+    }
+}
+
+#Content{
+    color: #2980b9;
+    
+    .Listing{
+        display:flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        .row{
+            width: 38vw;
+            height: 18vw;
+            display: flex;
+            align-items: center;
+            border: 3px solid #2ecc71;
+            
+
+            font-size: 23px;
+            img {
+                width: 70%;
+                height: 90%;
+            }
+            li {
+                font-family: 'Sriracha', sans-serif;
+                font-size: 12px;
+            }
+            div {
+                font-weight: bolder;
+            }
+            .Detail{
+                position: relative;
+                bottom: 0%;
+                right: -80%;
+                font-size: 18px;
+                text-decoration: underline;
+                color: #2980b9;
+                i{
+                    font-size: 15px;
+                }
+            }
+        }
+        
+        .row:hover{
+            color: #EAB543;
+            border: 3px solid #EAB543;
+            a{
+                color: #EAB543;
+            }
+        }   
+    }
+
+    p{
+        font-size: 15px;
+        font-family: 'Sriracha', sans-serif;
+    }
+    
+}
+
+#Detail{
+    .Image{
+        img{
+            width: 380px;
+            height: 280px;
+        }
+        i {
+            transform: translate(-45px, -100px);
+        }
+    } 
+    .col-6{
+        font-size: 15px;
+        color: #2980b9;
+        font-family: 'Sriracha', sans-serif;
+        .Title{
+            font-size: 120%;
+            font-weight: bold;
+            i{
+                font-size: 100%;
+            }
+        }
+        .alert{
+            width: 250px;
+            font-size: 10px;
+        }
+        form{
+            .form-control {
+                display: inline-block;
+                width: 300px;
+            }
+            button {
+                display: inline-block;
+                border: 1px solid salmon;
+                border-radius: 50%;
+                    
+                img{
+                    width: 40px;
+                    height: 40px;
+                }
+            }
+        }
+    }
+
+    .form-row{
+        font-family: 'Sriracha', sans-serif;
+    }
+
+    .Comments{
+        color: #40739e;
+        font-size: 15px;
+        font-family: 'Sriracha', sans-serif;
+        i{
+            font-size: 15px;
+        }
+    }
+    
+}
+
+hr{
+    border: 3px solid #27ae60;
+    border-radius: 5px;
+}
+
+a{
+    text-decoration: none;
+}

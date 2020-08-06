@@ -1,0 +1,52 @@
+{% extends "auctions/layout.html" %}
+
+{% block title %}
+    TikiTaka
+{% endblock %}
+
+{% block content %}
+    <div id = "Content" class = "container">
+        <h1>Auctions List</h1>
+
+        <div class = "Listing">
+            {% for listing in listings %}
+                <div class = "row">
+                    <img class = "col-6" src = "{{ listing.image }}">
+                    <div class = "col-6">
+                        <div>{{ listing.title }}</div>
+                        <ul>
+                            <li>Description: {{ listing.description }}</li>
+                            <li>Starting Price: {{ listing.starting_bid }}$</li>
+                        </ul>
+                        <a class = "Detail" href = "./{{ listing.id }}">Detail <i class="fas fa-info-circle"></i></a>
+                    </div>
+                </div> 
+            {% endfor %}
+        </div>
+
+        <br>
+
+        <h1 id = "UserListing">Your Listing</h1>
+
+        <div class = "Listing">
+            {% for listing in user_listings %}
+                <div class = "row">
+                    <img class = "col-6" src = "{{ listing.image }}">
+                    <div class = "col-6">
+                        <div>{{ listing.title }}</div>
+                        <ul>
+                            <li>Description: {{ listing.description }}</li>
+                            <li>Starting Price: {{ listing.starting_bid }}$</li>
+                        </ul>
+                        <a class = "Detail" href = "./{{ listing.id }}">Detail <i class="fas fa-info-circle"></i></a>
+                        
+                    </div>
+                </div> 
+            {% empty %}
+                <p>You haven't created any listings. <a href = "{% url 'new' %}">Create here</a></p>
+            {% endfor %}
+        </div>
+    </div>
+
+
+{% endblock %}
